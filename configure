@@ -7861,6 +7861,16 @@ if enabled vulkan; then
     { requested vulkan && warn "spirv-headers not found, swscale SPIR-V backend unavailable"; }
 fi
 
+# Android
+case $target_os in
+    android)
+        enable libdav1d
+        enable linux_dma_buf_h
+        disable v4l2_m2m
+        disable vulkan
+        ;;
+esac
+
 if enabled x86; then
     case $target_os in
         freebsd|mingw32*|mingw64*|win32|win64|linux|cygwin*)
